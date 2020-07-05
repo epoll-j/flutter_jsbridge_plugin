@@ -1,0 +1,28 @@
+PODS:
+  - Flutter (1.0.0)
+  - flutterjsbridgeplugin (0.0.1):
+    - Flutter
+  - webview_flutter (0.0.1):
+    - Flutter
+
+DEPENDENCIES:
+  - Flutter (from `Flutter`)
+  - flutterjsbridgeplugin (from `.symlinks/plugins/flutterjsbridgeplugin/ios`)
+  - webview_flutter (from `.symlinks/plugins/webview_flutter/ios`)
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Flutter
+  flutterjsbridgeplugin:
+    :path: ".symlinks/plugins/flutterjsbridgeplugin/ios"
+  webview_flutter:
+    :path: ".symlinks/plugins/webview_flutter/ios"
+
+SPEC CHECKSUMS:
+  Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
+  flutterjsbridgeplugin: f3b76adf6f52f511567fb8fe52ce7661f4b72f47
+  webview_flutter: d2b4d6c66968ad042ad94cbb791f5b72b4678a96
+
+PODFILE CHECKSUM: f32fb4e7c14f8b3ca19a369d7be425dd9241af27
+
+COCOAPODS: 1.8.4
