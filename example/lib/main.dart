@@ -74,13 +74,10 @@ class _MyAppState extends State<MyApp> {
 
             },
             navigationDelegate: (NavigationRequest request) {
-              _jsBridge.handlerUrl(request.url);
-              if (request.url.startsWith('https://www.youtube.com/')) {
-                print('blocking navigation to $request}');
-                return NavigationDecision.prevent;
+              if (_jsBridge.handlerUrl(request.url)) {
+                return NavigationDecision.navigate;
               }
-              print('allowing navigation to $request');
-              return NavigationDecision.navigate;
+              return NavigationDecision.prevent;
             },
             onPageStarted: (url) {
               _jsBridge.init();

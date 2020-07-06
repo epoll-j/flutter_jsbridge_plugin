@@ -103,7 +103,6 @@ String init_script_android = '''
     }
 
     function callHandler(handlerName, data, responseCallback) {
-        console.log(66666);
         _doSend({
             handlerName: handlerName,
             data: data
@@ -238,9 +237,6 @@ String init_script_ios = '''
 	}
 	
 	function callHandler(handlerName, data, responseCallback) {
-	  console.log(123123);
-	  console.log(handlerName);
-	  console.log(data);
 		if (arguments.length == 2 && typeof data == 'function') {
 			responseCallback = data;
 			data = null;
@@ -258,20 +254,12 @@ String init_script_ios = '''
 			responseCallbacks[callbackId] = responseCallback;
 			message['callbackId'] = callbackId;
 		}
-		console.log(66666);
-		console.log(messagingIframe);
-		console.log(sendMessageQueue);
-		console.log(CUSTOM_PROTOCOL_SCHEME + '://return/sendMsg/' + encodeURIComponent(JSON.stringify(message)));
 		sendMessageQueue.push(message);
 		_getIframe().src = CUSTOM_PROTOCOL_SCHEME + '://return/sendMsg/' + encodeURIComponent(JSON.stringify(message));
-		console.log(messagingIframe.scr);
 	}
 
 	function _fetchQueue() {
-	  console.log('fetch queue')
-	  console.log(sendMessageQueue);
 		var messageQueueString = JSON.stringify(sendMessageQueue);
-		console.log(messageQueueString);
 		sendMessageQueue = [];
 		return "123123123" + messageQueueString + "666";
 	}
