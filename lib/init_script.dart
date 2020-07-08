@@ -190,7 +190,6 @@ String init_script_android = '''
         send: send,
         registerHandler: registerHandler,
         callHandler: callHandler,
-        _fetchQueue: _fetchQueue,
         _handleMessageFromNative: _handleMessageFromNative
     };
 
@@ -217,7 +216,6 @@ String init_script_ios = '''
 		registerHandler: registerHandler,
 		callHandler: callHandler,
 		disableJavscriptAlertBoxSafetyTimeout: disableJavscriptAlertBoxSafetyTimeout,
-		_fetchQueue: _fetchQueue,
 		_handleMessageFromNative: _handleMessageFromNative
 	};
 
@@ -226,7 +224,6 @@ String init_script_ios = '''
 	var messageHandlers = {};
 	
 	var CUSTOM_PROTOCOL_SCHEME = 'jsbridge';
-	var QUEUE_HAS_MESSAGE = '__wvjb_queue_message__';
 	
 	var responseCallbacks = {};
 	var uniqueId = 1;
@@ -242,8 +239,8 @@ String init_script_ios = '''
 			data = null;
 		}
 		_doSend({ handlerName:handlerName, data:data }, responseCallback);
-//		_fetchQueue();
 	}
+	
 	function disableJavscriptAlertBoxSafetyTimeout() {
 		dispatchMessagesWithTimeoutSafety = false;
 	}
@@ -254,24 +251,17 @@ String init_script_ios = '''
 			responseCallbacks[callbackId] = responseCallback;
 			message['callbackId'] = callbackId;
 		}
-		sendMessageQueue.push(message);
 		_getIframe().src = CUSTOM_PROTOCOL_SCHEME + '://return/sendMsg/' + encodeURIComponent(JSON.stringify(message));
 	}
 
-	function _fetchQueue() {
-		var messageQueueString = JSON.stringify(sendMessageQueue);
-		sendMessageQueue = [];
-		return "123123123" + messageQueueString + "666";
-	}
-
-	function _dispatchMessageFromObjC(messageJSON) {
+	function _dispatchMessageFromNative(messageJSON) {
 		if (dispatchMessagesWithTimeoutSafety) {
-			setTimeout(_doDispatchMessageFromObjC);
+			setTimeout(_doDispatchMessageFromNative);
 		} else {
-			 _doDispatchMessageFromObjC();
+			 _doDispatchMessageFromNative();
 		}
 		
-		function _doDispatchMessageFromObjC() {
+		function _doDispatchMessageFromNative() {
 			var message = JSON.parse(messageJSON);
 			var messageHandler;
 			var responseCallback;
@@ -302,7 +292,7 @@ String init_script_ios = '''
 	}
 	
 	function _handleMessageFromNative(messageJSON) {
-        _dispatchMessageFromObjC(messageJSON);
+    _dispatchMessageFromNative(messageJSON);
 	}
   
   function _getIframe() {
@@ -314,22 +304,14 @@ String init_script_ios = '''
     
     return messagingIframe;
   }
-//	messagingIframe = document.createElement('iframe');
-//	messagingIframe.style.display = 'none';
-//	messagingIframe.src = CUSTOM_PROTOCOL_SCHEME + '://22222' + QUEUE_HAS_MESSAGE;
-//	console.log(777777)
-//	console.log(messagingIframe)
-//	console.log(messagingIframe.src)
-//	document.documentElement.appendChild(messagingIframe);
 
 	registerHandler("_disableJavascriptAlertBoxSafetyTimeout", disableJavscriptAlertBoxSafetyTimeout);
-	
 	setTimeout(_callWVJBCallbacks, 0);
 	function _callWVJBCallbacks() {
 		var callbacks = window.WVJBCallbacks;
 		delete window.WVJBCallbacks;
 		for (var i=0; i<callbacks.length; i++) {
-			callbacks[i](WebViewJavascriptBridge);
+			callbacks[i](window.WebViewJavascriptBridge);
 		}
 	}
 })();''';

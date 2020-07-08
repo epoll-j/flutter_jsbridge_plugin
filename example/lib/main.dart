@@ -62,7 +62,7 @@ class _MyAppState extends State<MyApp> {
               _jsBridge.loadJs(webViewController);
               _controller.complete(webViewController);
               _jsBridge.registerHandler("getToken", onCallBack: (data, func) {
-                func({"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhZ2VudCI6IlZJUCIsInJvbGUiOltdLCJwYXNzIjoidlorM2dkSTV5QjFVU1hsZUo3MlZURUVWbGFTQVVvS0tXbDYyUGVORDlrWXljZmx6ajY2SFowbGRMMTFPQVR5dSIsIm1vZGVsIjoiaU9TIiwicmlkIjoicnxERUJCNjNCRkIwMEY0MkVBQTQzNzdERjRERDREMTUyMyIsInVzZXJJZCI6Ijk4ZWVjYTNhZDQ1NDRlNmE4M2M1MDZjMWRjZjMyM2E2IiwiYWdlbnRMZXZlbCI6MX0.UCFZKSFZ8UoIiD9dAb10v6XX0gCZOP7VoUwKMQXTX10", "identity": 1, "phoneType": "iOS"});
+                func({"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhZ2VudCI6IlZJUCIsInJvbGUiOltdLCJwYXNzIjoidlorM2dkSTV5QjFVU1hsZUo3MlZURUVWbGFTQVVvS0tXbDYyUGVORDlrWXljZmx6ajY2SFowbGRMMTFPQVR5dSIsIm1vZGVsIjoiaU9TIiwicmlkIjoicnwxRUEzMkJGNkUxMkM0M0M0QUQ0RkRCNERBOTIyMzA3MyIsInVzZXJJZCI6Ijk4ZWVjYTNhZDQ1NDRlNmE4M2M1MDZjMWRjZjMyM2E2IiwiYWdlbnRMZXZlbCI6MX0.wGyl4N_8VtRiyE8te92SuVdbHEe5O5mKyMY20Z9hYP8", "identity": 1, "phoneType": "iOS"});
               });
               _jsBridge.registerHandler("IAPpayment", onCallBack: (data, func) {
                 print("iap");
