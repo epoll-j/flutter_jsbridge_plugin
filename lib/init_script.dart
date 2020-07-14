@@ -4,12 +4,17 @@ String init_script_android = '''
     if (window.WebViewJavascriptBridge) {
         return;
     }
-
+  
+    var lastCallTime = 0;
+    var stoId = null;
+    var FETCH_QUEUE = 50;
+  
     var messagingIframe;
     var sendMessageQueue = [];
     var receiveMessageQueue = [];
     var messageHandlers = {};
-
+    var timer = null;
+    
     var CUSTOM_PROTOCOL_SCHEME = 'jsbridge';
     var QUEUE_HAS_MESSAGE = '__QUEUE_MESSAGE__/';
 
@@ -54,9 +59,9 @@ String init_script_android = '''
 
 
     function _createQueueReadyIframe(doc) {
-        messagingIframe = doc.createElement('iframe');
-        messagingIframe.style.display = 'none';
-        doc.documentElement.appendChild(messagingIframe);
+//        messagingIframe = doc.createElement('iframe');
+//        messagingIframe.style.display = 'none';
+//        doc.documentElement.appendChild(messagingIframe);
     }
 
     function isAndroid() {
@@ -97,12 +102,11 @@ String init_script_android = '''
     }
 
     function registerHandler(handlerName, handler) {
-        console.log(handlerName);
-        console.log(555);
         messageHandlers[handlerName] = handler;
     }
 
     function callHandler(handlerName, data, responseCallback) {
+        console.log(handlerName);
         _doSend({
             handlerName: handlerName,
             data: data
@@ -111,28 +115,58 @@ String init_script_android = '''
 
     //sendMessage add message, 触发native处理 sendMessage
     function _doSend(message, responseCallback) {
+        console.log('send');        
         if (responseCallback) {
             var callbackId = 'cb_' + (uniqueId++) + '_' + new Date().getTime();
             responseCallbacks[callbackId] = responseCallback;
             message.callbackId = callbackId;
         }
-		
-		messagingIframe.src = CUSTOM_PROTOCOL_SCHEME + '://return/sendMsg/' + encodeURIComponent(JSON.stringify(message));
-        // sendMessageQueue.push(message);
-        // messagingIframe.src = CUSTOM_PROTOCOL_SCHEME + '://' + QUEUE_HAS_MESSAGE;
+        sendMessageQueue.push(message);
+        if (!timer) {
+          timer = setTimeout(function() {
+            _getIframe().src = CUSTOM_PROTOCOL_SCHEME + '://return/sendMsg/' + encodeURIComponent(JSON.stringify(sendMessageQueue));
+            sendMessageQueue = [];
+            timer = null;
+          }, 30);  
+        }
     }
 
     // 提供给native调用,该函数作用:获取sendMessageQueue返回给native,由于android不能直接获取返回的内容,所以使用url shouldOverrideUrlLoading 的方式返回内容
     function _fetchQueue() {
-        var messageQueueString = JSON.stringify(sendMessageQueue);
-        sendMessageQueue = [];
-        //add by hq
-        if (isIphone()) {
-            return messageQueueString;
-            //android can't read directly the return data, so we can reload iframe src to communicate with java
-        } else if (isAndroid()) {
-            messagingIframe.src = CUSTOM_PROTOCOL_SCHEME + '://return/sendMsg/' + encodeURIComponent(messageQueueString);
+      if (sendMessageQueue.length === 0) {
+        return;
+      }
+ 
+      if (new Date().getTime() - lastCallTime < FETCH_QUEUE) {
+        if (!stoId) {
+          stoId = setTimeout(_fetchQueue, FETCH_QUEUE);
         }
+        return;
+      }
+ 
+      lastCallTime = new Date().getTime();
+      stoId = null;
+    
+		  var messageQueueString = JSON.stringify(sendMessageQueue);
+		  sendMessageQueue = [];
+		  if (messageQueueString === '[]') {
+		    return;
+		  }
+		  console.log('fetch');
+		  console.log(messageQueueString);
+		  console.log(messagingIframe.src)
+		  console.log('src');
+		  _getIframe().src = CUSTOM_PROTOCOL_SCHEME + '://return/sendMsg/' + encodeURIComponent(messageQueueString);
+
+//        var messageQueueString = JSON.stringify(sendMessageQueue);
+//        sendMessageQueue = [];
+//        //add by hq
+//        if (isIphone()) {
+//            return messageQueueString;
+//            //android can't read directly the return data, so we can reload iframe src to communicate with java
+//        } else if (isAndroid()) {
+//            messagingIframe.src = CUSTOM_PROTOCOL_SCHEME + '://return/sendMsg/' + encodeURIComponent(messageQueueString);
+//        }
     }
 
     //提供给native使用,
@@ -184,17 +218,28 @@ String init_script_android = '''
             _dispatchMessageFromNative(messageJSON);
 //        }
     }
-
+    
+    function _getIframe() {
+      if (typeof(messagingIframe) == 'undefined') {
+        messagingIframe = document.createElement('iframe');
+	      messagingIframe.style.display = 'none';
+//	      messagingIframe.src = 'jsbridge://return/fetch'
+	      document.documentElement.appendChild(messagingIframe);
+      }
+      return messagingIframe;
+    }
+    
     var WebViewJavascriptBridge = window.WebViewJavascriptBridge = {
         init: init,
         send: send,
         registerHandler: registerHandler,
         callHandler: callHandler,
-        _handleMessageFromNative: _handleMessageFromNative
+        _handleMessageFromNative: _handleMessageFromNative,
+        _fetchQueue: _fetchQueue
     };
 
     var doc = document;
-    _createQueueReadyIframe(doc);
+//    _createQueueReadyIframe(doc);
     var readyEvent = doc.createEvent('Events');
     readyEvent.initEvent('WebViewJavascriptBridgeReady');
     readyEvent.bridge = WebViewJavascriptBridge;
@@ -212,11 +257,12 @@ String init_script_ios = '''
 			console.log("WebViewJavascriptBridge: ERROR:" + msg + "@" + url + ":" + line);
 		}
 	}
-	window.WebViewJavascriptBridge = {
+	var WebViewJavascriptBridge = window.WebViewJavascriptBridge = {
 		registerHandler: registerHandler,
 		callHandler: callHandler,
 		disableJavscriptAlertBoxSafetyTimeout: disableJavscriptAlertBoxSafetyTimeout,
-		_handleMessageFromNative: _handleMessageFromNative
+		_handleMessageFromNative: _handleMessageFromNative,
+		_fetchQueue: _fetchQueue
 	};
 
 	var messagingIframe;
@@ -251,12 +297,13 @@ String init_script_ios = '''
 			responseCallbacks[callbackId] = responseCallback;
 			message['callbackId'] = callbackId;
 		}
-		_getIframe().src = CUSTOM_PROTOCOL_SCHEME + '://return/sendMsg/' + encodeURIComponent(JSON.stringify(message));
+		sendMessageQueue.push(message);
+		_getIframe().src = 'jsbridge://return/fetch'
 	}
 
 	function _dispatchMessageFromNative(messageJSON) {
 		if (dispatchMessagesWithTimeoutSafety) {
-			setTimeout(_doDispatchMessageFromNative);
+			setTimeout(_doDispatchMessageFromNative, 0);
 		} else {
 			 _doDispatchMessageFromNative();
 		}
@@ -291,6 +338,18 @@ String init_script_ios = '''
 		}
 	}
 	
+	function _fetchQueue() {
+	  if (Array.isArray(sendMessageQueue) && sendMessageQueue.length === 0) {
+	    return;
+	  }
+		var messageQueueString = JSON.stringify(sendMessageQueue);
+		sendMessageQueue = [];
+		if (messageQueueString === '[]') {
+		  return;
+		}
+		_getIframe().src = CUSTOM_PROTOCOL_SCHEME + '://return/sendMsg/' + encodeURIComponent(messageQueueString);
+	}
+	
 	function _handleMessageFromNative(messageJSON) {
     _dispatchMessageFromNative(messageJSON);
 	}
@@ -299,14 +358,15 @@ String init_script_ios = '''
     if (typeof(messagingIframe) == 'undefined') {
       messagingIframe = document.createElement('iframe');
 	    messagingIframe.style.display = 'none';
+	    messagingIframe.src = 'jsbridge://return/fetch'
 	    document.documentElement.appendChild(messagingIframe);
     }
-    
     return messagingIframe;
   }
-
+  
 	registerHandler("_disableJavascriptAlertBoxSafetyTimeout", disableJavscriptAlertBoxSafetyTimeout);
 	setTimeout(_callWVJBCallbacks, 0);
+
 	function _callWVJBCallbacks() {
 		var callbacks = window.WVJBCallbacks;
 		delete window.WVJBCallbacks;

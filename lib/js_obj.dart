@@ -23,6 +23,20 @@ class JsMsg {
 
   JsMsg();
 
+  static List<JsMsg> fromList(List list) {
+    List<JsMsg> msgList = [];
+    for (Map json in list) {
+      JsMsg msg = JsMsg();
+      msg.callbackId = json["callbackId"];
+      msg.responseId = json["responseId"];
+      msg.responseData = convert.jsonEncode(json["responseData"]);
+      msg.data = convert.jsonEncode(json["data"]);
+      msg.handlerName = json["handlerName"];
+      msgList.add(msg);
+    }
+    return msgList;
+  }
+
   factory JsMsg.formJson(Map json) {
     JsMsg msg = JsMsg();
     msg.callbackId = json["callbackId"];
