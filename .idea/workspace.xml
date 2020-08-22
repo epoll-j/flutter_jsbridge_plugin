@@ -4,10 +4,8 @@
     <list default="true" id="dcada3ae-3b52-4c03-bb7b-adab82c5739f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/flutterjsbridgeplugin/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/flutterjsbridgeplugin/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/flutterjsbridgeplugin/lib/js_bridge.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/flutterjsbridgeplugin/lib/js_bridge.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/main.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/init_script.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/init_script.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/js_bridge.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/js_bridge.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/js_obj.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/js_obj.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

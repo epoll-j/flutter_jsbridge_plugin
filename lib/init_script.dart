@@ -152,10 +152,7 @@ String init_script_android = '''
 		  if (messageQueueString === '[]') {
 		    return;
 		  }
-		  console.log('fetch');
-		  console.log(messageQueueString);
-		  console.log(messagingIframe.src)
-		  console.log('src');
+		  
 		  _getIframe().src = CUSTOM_PROTOCOL_SCHEME + '://return/sendMsg/' + encodeURIComponent(messageQueueString);
 
 //        var messageQueueString = JSON.stringify(sendMessageQueue);
@@ -211,7 +208,6 @@ String init_script_android = '''
 
     //提供给native调用,receiveMessageQueue 在会在页面加载完后赋值为null,所以
     function _handleMessageFromNative(messageJSON) {
-//        alert(messageJSON);
 //        if (receiveMessageQueue) {
 //            receiveMessageQueue.push(messageJSON);
 //        } else {
@@ -223,7 +219,6 @@ String init_script_android = '''
       if (typeof(messagingIframe) == 'undefined') {
         messagingIframe = document.createElement('iframe');
 	      messagingIframe.style.display = 'none';
-//	      messagingIframe.src = 'jsbridge://return/fetch'
 	      document.documentElement.appendChild(messagingIframe);
       }
       return messagingIframe;
