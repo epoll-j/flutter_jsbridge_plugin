@@ -11,7 +11,7 @@ Add `flutter_jsbridge_plugin` as a [dependency in your pubspec.yaml file](https:
 dependencies:
   flutter_jsbridge_plugin: ^0.0.2
 ```
-### Register a Flutter handler function so that js can call
+### Init JsBridge and register handler
 
 ```
 ...
@@ -46,34 +46,5 @@ WebView(
 ))
 
 ```
-#### js can call this handler method "methodName" through:
-```
-WebViewJavascriptBridge.callHandler(
-    'methodName'
-    , {'param': '1'}
-    , function(data) {
-        // data is r1
-    }
-);
-```
-
-### Register a JavaScript handler function so that flutter can call
-```
-WebViewJavascriptBridge.registerHandler("methodName", function(data, responseCallback) {
-    // data is 'sendData'
-    responseCallback('r2');
-});
-```
-#### flutter can call this js handler function "methodName" through:
-```
-onWebViewCreated: (WebViewController webViewController) {
-    _controller.complete(webViewController);
-    webViewController.callHandler("methodName", data: "sendData", onCallBack: (callBackData) {
-        print(callBackData.name); // handler name
-        print(callBackData.data); // callback data (r2)
-    });
-}
-```
 
 #### MORE
-``
