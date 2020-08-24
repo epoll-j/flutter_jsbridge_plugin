@@ -1,7 +1,6 @@
-name: flutterjsbridgeplugin
+name: flutter_jsbridge_plugin
 description: A JsBridge Flutter plugin.
 version: 0.0.1
-author: epoll-j
 homepage: https://github.com/epoll-j
 
 environment:
@@ -11,7 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  webview_flutter: 0.3.22+1
+  webview_flutter: ^0.3.22+1
   sprintf: ^4.0.2
 
 dev_dependencies:
