@@ -1,10 +1,11 @@
 import 'dart:io';
 
-import 'package:flutterjsbridgeplugin/init_script.dart';
-import 'package:flutterjsbridgeplugin/js_obj.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'dart:convert' as convert;
 import 'package:sprintf/sprintf.dart';
+
+import 'init_script.dart';
+import 'js_obj.dart';
 
 typedef CallBackFunction = void Function(dynamic data);
 typedef BridgeHandler = void Function(dynamic data, CallBackFunction function);

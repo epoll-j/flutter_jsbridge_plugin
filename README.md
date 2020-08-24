@@ -6,33 +6,13 @@ This plugin must introduce  [webview_flutter](https://pub.dev/packages/webview_f
 
 
 ## Usage
-Add `flutter_jsbridge_plugin` as a [dependency in your pubspec.yaml file](https://flutter.io/platform-plugins/).
-
+Add `flutter_jsbridge_plugin` as a [dependency in your pubspec.yaml file](https://pub.dev/packages/flutter_jsbridge_plugin).
 ```
-BridgeWebView(
-    initialUrl: 'https://flutter.dev',
-    javascriptMode: JavascriptMode.unrestricted,
-    onWebViewCreated: (WebViewController webViewController) {
-        _controller.complete(webViewController);
-        webViewController.registerHandler("methodName", response: "r1", onCallBack: (callBackData) {
-            print(callBackData.name); // handler name
-            print(callBackData.data); // callback data ({'param': '1'})
-        });
-        webViewController.callHandler("methodName", data: "sendData", onCallBack: (callBackData) {
-            print(callBackData.name); // handler name
-            print(callBackData.data); // callback data (r2)
-        });
-    },
-    onPageStarted: (String url) {
-        print('Page started loading: $url');
-    },
-    onPageFinished: (String url) {
-        print('Page finished loading: $url');
-    }
-)
+dependencies:
+  flutter_jsbridge_plugin: ^0.0.1
 ```
-
 ### Register a Flutter handler function so that js can call
+
 ```
 ...
 final JsBridge _jsBridge = JsBridge();
@@ -94,3 +74,6 @@ onWebViewCreated: (WebViewController webViewController) {
     });
 }
 ```
+
+#### MORE
+``
