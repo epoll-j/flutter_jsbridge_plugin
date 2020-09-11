@@ -9,7 +9,7 @@ This plugin must introduce  [webview_flutter](https://pub.dev/packages/webview_f
 Add `flutter_jsbridge_plugin` as a [dependency in your pubspec.yaml file](https://pub.dev/packages/flutter_jsbridge_plugin).
 ```
 dependencies:
-  flutter_jsbridge_plugin: ^0.0.2
+  flutter_jsbridge_plugin: ^0.0.3
 ```
 ### Init JsBridge and register handler
 
