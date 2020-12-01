@@ -1,16 +1,16 @@
 name: flutter_jsbridge_plugin
 description: use jsbridge to webview in flutter
-version: 0.0.3
+version: 0.0.4
 homepage: https://github.com/epoll-j/flutter_jsbridge_plugin
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
-  flutter: ">=1.10.0"
+  flutter: ">=1.22.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  webview_flutter: ^0.3.22+1
+  webview_flutter: ^1.0.7
   sprintf: ^4.0.2
 
 dev_dependencies:
