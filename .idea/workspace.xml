@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="dcada3ae-3b52-4c03-bb7b-adab82c5739f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/CHANGELOG.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/Podfile" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/Podfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/Podfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/Podfile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/example/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/example/pubspec.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
-    </list>
+    <list default="true" id="dcada3ae-3b52-4c03-bb7b-adab82c5739f" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -69,34 +58,34 @@
       <screen x="-1920" y="-280" width="1920" height="1080" />
     </state>
     <state x="-1250" y="70" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.800/-3000.-520.1080.1920/-1920.-280.1920.1080@-1920.-280.1920.1080" timestamp="1599792476783" />
-    <state width="1878" height="410" key="GridCell.Tab.0.bottom" timestamp="1606786379453">
+    <state width="1878" height="267" key="GridCell.Tab.0.bottom" timestamp="1606786953031">
       <screen x="-1920" y="-255" width="1920" height="1055" />
     </state>
     <state width="1878" height="435" key="GridCell.Tab.0.bottom/0.0.1280.800/-3000.-520.1080.1920/-1920.-280.1920.1080@-1920.-280.1920.1080" timestamp="1599795637750" />
+    <state width="1878" height="267" key="GridCell.Tab.0.bottom/0.25.1280.691/-3000.-495.1080.1895/-1920.-255.1920.1055@-1920.-255.1920.1055" timestamp="1606786953031" />
     <state width="1878" height="410" key="GridCell.Tab.0.bottom/0.25.1280.694/-3000.-495.1080.1895/-1920.-255.1920.1055@-1920.-255.1920.1055" timestamp="1606786379453" />
-    <state width="1878" height="410" key="GridCell.Tab.0.center" timestamp="1606786379437">
+    <state width="1878" height="267" key="GridCell.Tab.0.center" timestamp="1606786953030">
       <screen x="-1920" y="-255" width="1920" height="1055" />
     </state>
     <state width="1878" height="435" key="GridCell.Tab.0.center/0.0.1280.800/-3000.-520.1080.1920/-1920.-280.1920.1080@-1920.-280.1920.1080" timestamp="1599795637746" />
+    <state width="1878" height="267" key="GridCell.Tab.0.center/0.25.1280.691/-3000.-495.1080.1895/-1920.-255.1920.1055@-1920.-255.1920.1055" timestamp="1606786953030" />
     <state width="1878" height="410" key="GridCell.Tab.0.center/0.25.1280.694/-3000.-495.1080.1895/-1920.-255.1920.1055@-1920.-255.1920.1055" timestamp="1606786379437" />
-    <state width="1878" height="410" key="GridCell.Tab.0.left" timestamp="1606786379431">
+    <state width="1878" height="267" key="GridCell.Tab.0.left" timestamp="1606786953028">
       <screen x="-1920" y="-255" width="1920" height="1055" />
     </state>
     <state width="1878" height="435" key="GridCell.Tab.0.left/0.0.1280.800/-3000.-520.1080.1920/-1920.-280.1920.1080@-1920.-280.1920.1080" timestamp="1599795637744" />
+    <state width="1878" height="267" key="GridCell.Tab.0.left/0.25.1280.691/-3000.-495.1080.1895/-1920.-255.1920.1055@-1920.-255.1920.1055" timestamp="1606786953028" />
     <state width="1878" height="410" key="GridCell.Tab.0.left/0.25.1280.694/-3000.-495.1080.1895/-1920.-255.1920.1055@-1920.-255.1920.1055" timestamp="1606786379431" />
-    <state width="1878" height="410" key="GridCell.Tab.0.right" timestamp="1606786379446">
+    <state width="1878" height="267" key="GridCell.Tab.0.right" timestamp="1606786953031">
       <screen x="-1920" y="-255" width="1920" height="1055" />
     </state>
     <state width="1878" height="435" key="GridCell.Tab.0.right/0.0.1280.800/-3000.-520.1080.1920/-1920.-280.1920.1080@-1920.-280.1920.1080" timestamp="1599795637748" />
+    <state width="1878" height="267" key="GridCell.Tab.0.right/0.25.1280.691/-3000.-495.1080.1895/-1920.-255.1920.1055@-1920.-255.1920.1055" timestamp="1606786953031" />
     <state width="1878" height="410" key="GridCell.Tab.0.right/0.25.1280.694/-3000.-495.1080.1895/-1920.-255.1920.1055@-1920.-255.1920.1055" timestamp="1606786379446" />
     <state x="-1156" y="-190" key="SettingsEditor" timestamp="1599795590841">
       <screen x="-1920" y="-280" width="1920" height="1080" />
     </state>
     <state x="-1156" y="-190" key="SettingsEditor/0.0.1280.800/-3000.-520.1080.1920/-1920.-280.1920.1080@-1920.-280.1920.1080" timestamp="1599795590841" />
-    <state x="240" y="140" key="Vcs.Push.Dialog.v2" timestamp="1598095847100">
-      <screen x="0" y="0" width="1280" height="800" />
-    </state>
-    <state x="240" y="140" key="Vcs.Push.Dialog.v2/0.0.1280.800@0.0.1280.800" timestamp="1598095847100" />
     <state x="-1820" y="-180" width="1720" height="880" key="com.android.tools.idea.avdmanager.AvdListDialog" timestamp="1599792743559">
       <screen x="-1920" y="-280" width="1920" height="1080" />
     </state>
