@@ -47,5 +47,4 @@ WebView(
 
 ```
 
-## JS Usage
-[js file](https://github.com/epoll-j/flutter_jsbridge_plugin/blob/master/JSBridge.js)
+#### MORE
