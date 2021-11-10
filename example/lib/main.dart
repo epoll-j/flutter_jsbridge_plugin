@@ -56,7 +56,7 @@ class _MyAppState extends State<MyApp> {
             title: const Text('Plugin example app'),
           ),
           body: WebView(
-            initialUrl: "https://www.baidu.com?timeStamp=${new DateTime.now().millisecondsSinceEpoch}",
+            initialUrl: "https://juejin.cn?timeStamp=${new DateTime.now().millisecondsSinceEpoch}",
             javascriptMode: JavascriptMode.unrestricted,
             onWebViewCreated: (WebViewController webViewController) async {
               _jsBridge.loadJs(webViewController);

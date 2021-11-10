@@ -1,8 +1,10 @@
 <component name="libraryTable">
   <library name="Flutter Plugins" type="FlutterPluginsLibraryType">
     <CLASSES>
+      <root url="file://$USER_HOME$/flutter/.pub-cache/hosted/pub.dartlang.org/webview_flutter_wkwebview-2.2.0" />
       <root url="file://$PROJECT_DIR$" />
-      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/webview_flutter-1.0.7" />
+      <root url="file://$USER_HOME$/flutter/.pub-cache/hosted/pub.dartlang.org/webview_flutter_android-2.2.1" />
+      <root url="file://$USER_HOME$/flutter/.pub-cache/hosted/pub.dartlang.org/webview_flutter-2.3.0" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
